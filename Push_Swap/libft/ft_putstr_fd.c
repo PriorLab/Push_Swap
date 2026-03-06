@@ -1,23 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free.c                                             :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alemigue <alemigue@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: alemigue <alemigue@student.42porto.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/27 17:05:46 by alemigue          #+#    #+#             */
-/*   Updated: 2026/03/06 11:15:20 by alemigue         ###   ########.fr       */
+/*   Created: 2025/11/07 12:18:19 by alemigue          #+#    #+#             */
+/*   Updated: 2025/11/07 15:19:58 by alemigue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Includes/push_swap.h"
+#include "libft.h"
 
-static void free_split(char **split)
+void	ft_putstr_fd(char *s, int fd)
 {
-    int i;
+	int	i;
 
-    i = 0;
-    while (split[i])
-        free(split[i++]);
-    free(split);
+	if (!s)
+		return ;
+	i = 0;
+	while (s[i])
+	{
+		write(fd, &s[i], 1);
+		i++;
+	}
 }

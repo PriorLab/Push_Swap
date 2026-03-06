@@ -1,32 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_utils.c                                      :+:      :+:    :+:   */
+/*   print_hexa.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alemigue <alemigue@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/27 17:05:30 by alemigue          #+#    #+#             */
-/*   Updated: 2026/03/06 12:53:00 by alemigue         ###   ########.fr       */
+/*   Created: 2025/12/22 17:52:25 by alemigue          #+#    #+#             */
+/*   Updated: 2025/12/31 12:06:32 by alemigue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Includes/push_swap.h"
+#include "ft_printf.h"
 
-static void parse_split(char **split, t_stack *a)
+int	print_hex(unsigned long n, int uppercase)
 {
-    int j;
+	char	*base;
+	int		rec;
+	int		w;
 
-    j = 0;
-    while (split[j])
-    {
-        if (!ft_is_number(split[j]) || ft_is_overflow(split[j]))
-        {
-            free_split(split);
-            error_exit(a, NULL);
-        }
-        stack_push(a, ft_atoi(split[j]));
-        j++;
-    }
+	if (uppercase)
+		base = "0123456789ABCDEF";
+	else
+		base = "0123456789abcdef";
+	if (n >= 16)
+	{
+		rec = print_hex(n / 16, uppercase);
+		if (rec == -1)
+			return (-1);
+	}
+	w = print_char(base[n % 16]);
+	if (w == -1)
+		return (-1);
+	if (n >= 16)
+		return (rec + 1);
+	return (1);
 }
-
-

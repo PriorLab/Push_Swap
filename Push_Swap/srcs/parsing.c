@@ -6,7 +6,96 @@
 /*   By: alemigue <alemigue@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/27 17:00:00 by alemigue          #+#    #+#             */
-/*   Updated: 2026/02/27 17:00:15 by alemigue         ###   ########.fr       */
+/*   Updated: 2026/03/06 12:44:29 by alemigue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../includes/push_swap.h"
+
+int ft_isnumber(char *str)
+{
+	int	i;
+	
+	i = 0;
+	if(!str)
+		return(0);
+	if(str[i] == '-' || str[i] == '+')
+		i++;
+	while(str[i])
+	{
+		if (str[i] < '0' || str[i] > '9')
+			return(0);
+		i++
+	}
+	return(1);
+}
+
+long    ft_atol(char *str)
+{
+    long    result;
+    int     sign;
+    int     i;
+
+    result = 0;
+    sign = 1;
+    i = 0;
+    if (str[i] == '-' || str[i] == '+')
+    {
+        if (str[i] == '-')
+            sign = -1;
+        i++;
+    }
+    while (str[i] >= '0' && str[i] <= '9')
+    {
+        result = result * 10 + (str[i] - '0');
+        i++;
+    }
+    return (result * sign);
+}
+
+static int ft_overflow(char*str)
+{
+	long n;
+
+	n = ft_atol(str);
+	if (n > 2147483647 || n < -2147483648)
+		return (1);
+	return (0);
+}
+
+int ft_duplicates(Stack *stack)
+{
+	Node	i;
+	Node	j;
+
+	i = a -> top;
+	while(i)
+	{
+		j = i -> next;
+		while (j)
+		{
+			if(i -> value == j -> value)
+				return(1);
+			j = j -> next;
+		}
+		i = j -> next;
+	}
+	return(0);
+}
+
+void	parse_args(int ac, char *av[], Stack *a)
+{
+	int	i;
+	char	*split[];
+
+	i = argc - 1;
+	while(i >= 1)
+	{
+		split = ft_split(argv[i], ' ');
+		parse_split(split, a);
+		free_split(split);
+		i--;
+	}
+	if (ft_duplicates(a))
+		error_exit(a, NULL);
+}

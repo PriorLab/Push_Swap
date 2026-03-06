@@ -1,32 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_utils.c                                      :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alemigue <alemigue@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/27 17:05:30 by alemigue          #+#    #+#             */
-/*   Updated: 2026/03/06 12:53:00 by alemigue         ###   ########.fr       */
+/*   Created: 2025/11/08 10:08:25 by alemigue          #+#    #+#             */
+/*   Updated: 2025/11/08 10:47:08 by alemigue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Includes/push_swap.h"
+#include "libft.h"
 
-static void parse_split(char **split, t_stack *a)
+t_list	*ft_lstnew(void *content)
 {
-    int j;
+	t_list	*beginning;
 
-    j = 0;
-    while (split[j])
-    {
-        if (!ft_is_number(split[j]) || ft_is_overflow(split[j]))
-        {
-            free_split(split);
-            error_exit(a, NULL);
-        }
-        stack_push(a, ft_atoi(split[j]));
-        j++;
-    }
+	beginning = malloc(sizeof(t_list));
+	if (!beginning)
+		return (NULL);
+	beginning->content = content;
+	beginning->next = NULL;
+	return (beginning);
 }
+/*
+#include <stdio.h>
 
+int main (void)
+{
+	t_list	*node;
 
+	node = ft_lstnew("Teste");
+	printf("%s\n", (char*)node->content);
+	free(node);
+	return (0);
+	
+}*/

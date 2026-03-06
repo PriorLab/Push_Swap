@@ -1,32 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_utils.c                                      :+:      :+:    :+:   */
+/*   print_num.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alemigue <alemigue@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/27 17:05:30 by alemigue          #+#    #+#             */
-/*   Updated: 2026/03/06 12:53:00 by alemigue         ###   ########.fr       */
+/*   Created: 2025/12/22 14:11:02 by alemigue          #+#    #+#             */
+/*   Updated: 2025/12/31 12:57:02 by alemigue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Includes/push_swap.h"
+#include "ft_printf.h"
 
-static void parse_split(char **split, t_stack *a)
+int	print_num(long i)
 {
-    int j;
+	int	rec;
 
-    j = 0;
-    while (split[j])
-    {
-        if (!ft_is_number(split[j]) || ft_is_overflow(split[j]))
-        {
-            free_split(split);
-            error_exit(a, NULL);
-        }
-        stack_push(a, ft_atoi(split[j]));
-        j++;
-    }
+	if (i < 0)
+	{
+		if (print_char('-') == -1)
+			return (-1);
+		return (print_num(-i) + 1);
+	}
+	if (i >= 10)
+	{
+		rec = print_num(i / 10);
+		if (rec == -1)
+			return (-1);
+		if (print_char('0' + (i % 10)) == -1)
+			return (-1);
+		return (rec + 1);
+	}
+	if (print_char('0' + i) == -1)
+		return (-1);
+	return (1);
 }
-
-

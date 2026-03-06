@@ -6,8 +6,13 @@
 /*   By: alemigue <alemigue@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/27 17:04:01 by alemigue          #+#    #+#             */
-/*   Updated: 2026/02/27 17:04:02 by alemigue         ###   ########.fr       */
+/*   Updated: 2026/03/06 18:00:44 by alemigue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../../Includes/push_swap.h"
 
+static void reverse_rotate(Stack *stack)
+{
+
+}

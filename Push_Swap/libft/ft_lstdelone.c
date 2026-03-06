@@ -1,32 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_utils.c                                      :+:      :+:    :+:   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alemigue <alemigue@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/27 17:05:30 by alemigue          #+#    #+#             */
-/*   Updated: 2026/03/06 12:53:00 by alemigue         ###   ########.fr       */
+/*   Created: 2025/11/08 11:52:48 by alemigue          #+#    #+#             */
+/*   Updated: 2025/11/08 17:39:30 by alemigue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Includes/push_swap.h"
+#include "libft.h"
 
-static void parse_split(char **split, t_stack *a)
+void	ft_lstdelone(t_list *lst, void (*del)(void*))
 {
-    int j;
-
-    j = 0;
-    while (split[j])
-    {
-        if (!ft_is_number(split[j]) || ft_is_overflow(split[j]))
-        {
-            free_split(split);
-            error_exit(a, NULL);
-        }
-        stack_push(a, ft_atoi(split[j]));
-        j++;
-    }
+	del(lst->content);
+	free(lst);
 }
-
-
+//Takes a node as parameter and frees its content
+//using the function ’del’. Free the node itself but
+//does NOT free the next node.

@@ -1,32 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_utils.c                                      :+:      :+:    :+:   */
+/*   ft_atol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alemigue <alemigue@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/27 17:05:30 by alemigue          #+#    #+#             */
-/*   Updated: 2026/03/06 12:53:00 by alemigue         ###   ########.fr       */
+/*   Created: 2026/03/06 09:56:10 by alemigue          #+#    #+#             */
+/*   Updated: 2026/03/06 14:14:21 by alemigue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Includes/push_swap.h"
-
-static void parse_split(char **split, t_stack *a)
+long    ft_atol(char *str)
 {
-    int j;
+    long    result;
+    int     sign;
+    int     i;
 
-    j = 0;
-    while (split[j])
+    result = 0;
+    sign = 1;
+    i = 0;
+    if (str[i] == '-' || str[i] == '+')
     {
-        if (!ft_is_number(split[j]) || ft_is_overflow(split[j]))
-        {
-            free_split(split);
-            error_exit(a, NULL);
-        }
-        stack_push(a, ft_atoi(split[j]));
-        j++;
+        if (str[i] == '-')
+            sign = -1;
+        i++;
     }
+    while (str[i] >= '0' && str[i] <= '9')
+    {
+        result = result * 10 + (str[i] - '0');
+        i++;
+    }
+    return (result * sign);
 }
-
-
