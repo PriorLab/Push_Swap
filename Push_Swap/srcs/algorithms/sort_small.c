@@ -6,7 +6,7 @@
 /*   By: alemigue <alemigue@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/27 17:04:25 by alemigue          #+#    #+#             */
-/*   Updated: 2026/03/08 21:13:15 by alemigue         ###   ########.fr       */
+/*   Updated: 2026/03/08 21:31:12 by alemigue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,13 @@ static void sort_three(Stack *a)
 	mid = a->top->next->value;
 	bot = a->top->next->next->value;
 
-	if (top > mid && top > bot && mid < bot)
-	
-
+	if (top > mid && top < bot)
+		sa(a);
 	if (top < mid && top < bot && mid > bot)
 
 	if (top mid && top bot && mid bot)
 	
-	if ()
+	if (top > mid && mid > bot)
 
 	if ()
 }	
