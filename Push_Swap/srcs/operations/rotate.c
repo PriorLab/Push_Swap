@@ -6,7 +6,7 @@
 /*   By: alemigue <alemigue@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/27 17:03:45 by alemigue          #+#    #+#             */
-/*   Updated: 2026/03/06 17:58:21 by alemigue         ###   ########.fr       */
+/*   Updated: 2026/03/08 15:35:17 by alemigue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,21 +28,21 @@ static void rotate(Stack *stack)
 	bottom->next = top;
 }
 
-void	ra(Stack *a)
+void ra(Stack* a)
 {
 	rotate(a);
 	ft_printf("ra\n");
 }
 
-void	rb(Stack *b)
+void rb(Stack *b)
 {
 	rotate(b);
 	ft_printf("rb\n");
 }
 
-void	rr(Stack *a, Stack *b)
+void rr(Stack *a, Stack *b)
 {
 	rotate(a);
 	rotate(b);
-	ft_printf("rr\n");
+	printf("rr\n");
 }
