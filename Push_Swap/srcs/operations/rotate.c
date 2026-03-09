@@ -6,44 +6,43 @@
 /*   By: alemigue <alemigue@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/27 17:03:45 by alemigue          #+#    #+#             */
-/*   Updated: 2026/03/08 21:24:52 by alemigue         ###   ########.fr       */
+/*   Updated: 2026/03/09 15:19:36 by alemigue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../Include/push_swap.h"
+#include "../../include/push_swap.h"
 
-static void rotate(Stack *stack)
+static void	rotate(t_stack *stack)
 {
 	Node	*top;
 	Node	*bottom;
 
-	if(!stack->top || !stack->top->next)
+	if (!stack->top || !stack->top->next)
 		return ;
 	top = stack->top;
 	stack->top = top->next;
 	top->next = NULL;
 	bottom = stack->top;
-	while(bottom->next)
+	while (bottom->next)
 		bottom = bottom->next;
 	bottom->next = top;
 }
 
-void    ra(t_stack *a)
+void	ra(t_stack *a)
 {
-    rotate(a);
-    ft_printf("ra\n");
+	rotate(a);
+	ft_printf("ra\n");
 }
 
-void    rb(t_stack *b)
+void	rb(t_stack *b)
 {
-    rotate(b);
-    ft_printf("rb\n");
+	rotate(b);
+	ft_printf("rb\n");
 }
 
-void    rr(t_stack *a, t_stack *b)
+void	rr(t_stack *a, t_stack *b)
 {
-    rotate(a);
-    rotate(b);
-    ft_printf("rr\n");
+	rotate(a);
+	rotate(b);
+	ft_printf("rr\n");
 }
-

@@ -6,18 +6,33 @@
 /*   By: alemigue <alemigue@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/27 17:05:46 by alemigue          #+#    #+#             */
-/*   Updated: 2026/03/06 11:15:20 by alemigue         ###   ########.fr       */
+/*   Updated: 2026/03/09 15:17:18 by alemigue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Includes/push_swap.h"
+#include "../../includes/push_swap.h"
 
-static void free_split(char **split)
+void	free_split(char **split)
 {
-    int i;
+	int	i;
 
-    i = 0;
-    while (split[i])
-        free(split[i++]);
-    free(split);
+	i = 0;
+	while (split[i])
+		free(split[i++]);
+	free(split);
+}
+
+void	free_stack(t_stack *stack)
+{
+	t_node	*tmp;
+
+	if (!stack)
+		return ;
+	while (stack->top)
+	{
+		tmp = stack->top;
+		stack->top = stack->top->next;
+		free(tmp);
+	}
+	free(stack);
 }

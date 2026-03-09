@@ -6,29 +6,29 @@
 /*   By: alemigue <alemigue@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/27 17:03:12 by alemigue          #+#    #+#             */
-/*   Updated: 2026/03/06 15:26:01 by alemigue         ###   ########.fr       */
+/*   Updated: 2026/03/09 15:10:33 by alemigue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Include/push_swap.h"
+#include "../include/push_swap.h"
 
-static int ft_size(Stack *a)
+static int	ft_size(t_stack *a)
 {
-	return(a->size);
+	return (a->size);
 }
 
-static void find_min_and_assign(Stack *a, int index)
+static void	find_min_and_assign(t_stack *a, int index)
 {
-	Node	*current;
-	Node	*min_node
-	int	min;
+	t_node	*current;
+	t_node	*min_node;
+		int	min;
 
-	current = a->top
-	min = INT_MAX;
+	current = a->top;
 	min_node = NULL;
+	min = INT_MAX;
 	while (current)
 	{
-		if(current->index == -1 && current->value < min)
+		if (current->index == -1 && current->value < min)
 		{
 			min = current->value;
 			min_node = current;
@@ -39,14 +39,14 @@ static void find_min_and_assign(Stack *a, int index)
 		min_node->index = index;
 }
 
-void assign_indexes(Stack *a)
+void	assign_indexes(t_stack *a)
 {
 	int	i;
 
 	i = 0;
 	while (i < a->size)
 	{
-	find_min_and_assign(a, i);
-	i++;
+		find_min_and_assign(a, i);
+		i++;
 	}
 }

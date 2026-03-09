@@ -6,18 +6,18 @@
 /*   By: alemigue <alemigue@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/27 17:03:36 by alemigue          #+#    #+#             */
-/*   Updated: 2026/03/08 21:23:52 by alemigue         ###   ########.fr       */
+/*   Updated: 2026/03/09 15:19:59 by alemigue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../Includes/push_swap.h"
+#include "../../includes/push_swap.h"
 
-static void swap(Stack	*stack)
+static void	swap(t_stack	*stack)
 {
-	int first;
-	int second;
+	int	first;
+	int	second;
 
-	if(!stack->stop || !stack->top->next)
+	if (!stack->top || !stack->top->next)
 		return ;
 	first = stack_pop(stack);
 	second = stack_pop(stack);
@@ -25,19 +25,19 @@ static void swap(Stack	*stack)
 	stack_push(stack, second);
 }
 
-void	sa(Stack *a)
+void	sa(t_stack *a)
 {
 	swap(a);
 	ft_printf("sa\n");
 }
 
-void	sb(Stack *b)
+void	sb(t_stack *b)
 {
 	swap(b);
 	ft_printf("sb\n");
 }
 
-void	ss(Stack *a, Stack *b)
+void	ss(t_stack *a, Stack *b)
 {
 	swap(a);
 	swap(b);

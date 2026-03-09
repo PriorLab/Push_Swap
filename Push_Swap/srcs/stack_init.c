@@ -6,27 +6,29 @@
 /*   By: alemigue <alemigue@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/27 17:00:30 by alemigue          #+#    #+#             */
-/*   Updated: 2026/03/06 09:12:00 by alemigue         ###   ########.fr       */
+/*   Updated: 2026/03/09 15:18:53 by alemigue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-Stack *stack_new (void)
+t_stack	*stack_new(void)
 {
-	Stack *stack;
+	t_stack	*stack;
 
 	stack = malloc(sizeof(Stack));
 	if (!stack)
-		return(NULL);
+		return (NULL);
 	stack->top = NULL;
+	stack->size = 0;
+	return(stack);
 }
 
-void push(Stack *stack, int value)
+void	stack_push(t_stack *stack, int value)
 {
-	Node	*new;
+	t_node	*new;
 
-	new = malloc(sizeof(Node));
+	new = malloc(sizeof(t_node));
 	if (!new)
 		return ;
 	new -> value = value;
@@ -34,34 +36,35 @@ void push(Stack *stack, int value)
 	stack -> top = new;
 	stack -> size ++;
 }
-int pop(Stack	*stack)
+
+int	stack_pop(t_stack	*stack)
 {
-	Node *tmp;
-	int value;
+	t_node	*tmp;
+	int		value;
 
 	tmp = stack -> top;
 	value = tmp -> value;
 	stack -> top = stack->top->next;
 	free(tmp);
 	stack->size--;
-	return(value);
+	return (value);
 }
 
-int peek(Stack	*stack)
+int	stack_peek(t_stack	*stack)
 {
-	return(stack->top->value);
+	return (stack->top->value);
 }
 
-int sorted(Stack *stack)
+int	stack_is_sorted(t_stack *stack)
 {
-	Node *current;
+	t_node	*current;
 
 	current = stack -> top;
-	while(current && current->next)
+	while (current && current->next)
 	{
 		if (current -> value > current->next->value)
 			eturn(0);
 		current = current -> next;
 	}
-	return(1);
+	return (1);
 }
