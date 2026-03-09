@@ -6,7 +6,7 @@
 /*   By: alemigue <alemigue@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 11:10:48 by alemigue          #+#    #+#             */
-/*   Updated: 2026/03/09 14:55:29 by alemigue         ###   ########.fr       */
+/*   Updated: 2025/11/16 15:22:52 by alemigue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
-int		ft_printf(const char *input, ...);
+int	ft_printf(const char *input, ...);
 /*_______________________________________________________________________*/
 /*___________________________Bonus_______________________________________*/
 /*_______________________________________________________________________*/

@@ -10,12 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/push_swap.h"
+#include "../../includes/push_swap.h"
 
 static void	rotate(t_stack *stack)
 {
-	Node	*top;
-	Node	*bottom;
+	t_node	*top;
+	t_node	*bottom;
 
 	if (!stack->top || !stack->top->next)
 		return ;

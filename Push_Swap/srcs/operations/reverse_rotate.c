@@ -14,8 +14,8 @@
 
 static void	reverse_rotate(t_stack *stack)
 {
-	Node	*current;
-	Node	*bottom;
+	t_node	*current;
+	t_node	*bottom;
 
 	if (!stack->top || !stack->top->next)
 		return ;
@@ -40,7 +40,7 @@ void	rrb(t_stack *b)
 	ft_printf("rrb\n");
 }
 
-void	rrr(t_stack *a, Stack *b)
+void	rrr(t_stack *a, t_stack *b)
 {
 	reverse_rotate(a);
 	reverse_rotate(b);

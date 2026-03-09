@@ -10,18 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "../includes/push_swap.h"
 
-static int	ft_size(t_stack *a)
-{
-	return (a->size);
-}
 
 static void	find_min_and_assign(t_stack *a, int index)
 {
 	t_node	*current;
 	t_node	*min_node;
-		int	min;
+	int		min;
 
 	current = a->top;
 	min_node = NULL;

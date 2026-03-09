@@ -53,7 +53,7 @@ long	ft_atol(char *str)
 	return (result * sign);
 }
 
-static int	ft_overflow(char *str)
+int	ft_is_overflow(char *str)
 {
 	long	n;
 
@@ -65,8 +65,8 @@ static int	ft_overflow(char *str)
 
 int	ft_duplicates(t_stack *a)
 {
-	t_node	i;
-	t_node	j;
+	t_node	*i;
+	t_node	*j;
 
 	i = a -> top;
 	while (i)
@@ -78,7 +78,7 @@ int	ft_duplicates(t_stack *a)
 				return (1);
 			j = j -> next;
 		}
-		i = j -> next;
+		i = i -> next;
 	}
 	return (0);
 }
@@ -92,6 +92,11 @@ void	parse_args(int ac, char *av[], t_stack *a)
 	while (i >= 1)
 	{
 		split = ft_split(av[i], ' ');
+		if (!split || !split[0])
+		{
+			free_split(split);
+			error_exit(a, NULL);
+		}
 		parse_split(split, a);
 		free_split(split);
 		i--;

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../Includes/push_swap.h"
+#include "../../includes/push_swap.h"
 
 static void	sort_two(t_stack *a)
 {
@@ -57,7 +57,7 @@ static void	sort_five(t_stack *a, t_stack *b)
 	sort_three(a);
 	sort_two(b);
 	while (b->top)
-		pa(a,b);
+		pa(a, b);
 }
 
 void	sort_small(t_stack *a, t_stack *b)

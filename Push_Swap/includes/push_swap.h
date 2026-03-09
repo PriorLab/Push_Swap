@@ -6,7 +6,7 @@
 /*   By: alemigue <alemigue@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/09 14:51:54 by alemigue          #+#    #+#             */
-/*   Updated: 2026/03/09 15:08:22 by alemigue         ###   ########.fr       */
+/*   Updated: 2026/03/09 16:16:42 by alemigue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ int		ft_is_number(char *str);
 long	ft_atol(char *str);
 int		ft_duplicates(t_stack *stack);
 void	parse_args(int ac, char *av[], t_stack *a);
+int		ft_is_overflow(char *str);
 
 /* stack init / utils */
 t_stack	*stack_new(void);

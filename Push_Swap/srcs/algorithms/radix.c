@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../Includes/push_swap.h"
+#include "../../includes/push_swap.h"
 
 static int	get_num_bits(int size)
 {
@@ -22,7 +22,7 @@ static int	get_num_bits(int size)
 	return (num_bits);
 }
 
-static void	radix_pass(Stack *a, t_stack *b, int bit)
+static void	radix_pass(t_stack *a, t_stack *b, int bit)
 {
 	int	size;
 	int	i;
@@ -45,7 +45,7 @@ static void	push_back(t_stack *a, t_stack *b)
 		pa(a, b);
 }
 
-void	sort_radix(t_stack *a; t_stack *b)
+void	sort_radix(t_stack *a, t_stack *b)
 {
 	int	num_bits;
 	int	bit;

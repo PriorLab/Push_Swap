@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "../../includes/push_swap.h"
 
 void	error_exit(t_stack *a, t_stack *b)
 {
