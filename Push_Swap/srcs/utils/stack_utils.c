@@ -18,6 +18,9 @@ void	parse_split(char **split, t_stack *a)
 
 	j = 0;
 	while (split[j])
+		j++;
+	j--;
+	while (j >= 0)
 	{
 		if (!ft_is_number(split[j]) || ft_is_overflow(split[j]))
 		{
@@ -25,6 +28,6 @@ void	parse_split(char **split, t_stack *a)
 			error_exit(a, NULL);
 		}
 		stack_push(a, ft_atoi(split[j]));
-		j++;
+		j--;
 	}
 }
