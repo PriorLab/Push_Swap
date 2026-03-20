@@ -12,22 +12,36 @@
 
 #include "../../includes/push_swap.h"
 
+
 void	parse_split(char **split, t_stack *a)
 {
-	int	j;
+	int		j;
+	long	num;
 
 	j = 0;
 	while (split[j])
 		j++;
 	j--;
+	
 	while (j >= 0)
 	{
-		if (!ft_is_number(split[j]) || ft_is_overflow(split[j]))
+		// Verifica se é número válido
+		if (!ft_is_number(split[j]))
 		{
 			free_split(split);
 			error_exit(a, NULL);
 		}
-		stack_push(a, ft_atoi(split[j]));
+
+		num = ft_atol(split[j]);
+		if (num > INT_MAX || num < INT_MIN)
+		{
+			free_split(split);
+			error_exit(a, NULL);
+		}
+		
+		// Push com cast seguro
+		stack_push(a, (int)num);
+		
 		j--;
 	}
 }
