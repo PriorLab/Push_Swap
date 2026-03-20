@@ -12,7 +12,6 @@
 
 #include "../../includes/push_swap.h"
 
-
 static void	sort_two(t_stack *a)
 {
 	if (a->top->value > a->top->next->value)
@@ -25,10 +24,12 @@ static void	sort_three(t_stack *a)
 	int	mid;
 	int	bot;
 
+	if (stack_is_sorted(a))
+		return ;
 	top = a->top->value;
 	mid = a->top->next->value;
 	bot = a->top->next->next->value;
-	
+
 	if (top > mid && mid < bot && top < bot)
 		sa(a);
 	else if (top > mid && mid < bot && top > bot)
@@ -49,7 +50,6 @@ static void	sort_three(t_stack *a)
 
 static void	sort_four(t_stack *a, t_stack *b)
 {
-	// Move o menor (index 0) para b
 	while (a->size > 3)
 	{
 		if (a->top->index == 0)
@@ -63,7 +63,6 @@ static void	sort_four(t_stack *a, t_stack *b)
 
 static void	sort_five(t_stack *a, t_stack *b)
 {
-	// Move os 2 menores (index 0 e 1) para b
 	while (a->size > 3)
 	{
 		if (a->top->index == 0 || a->top->index == 1)
@@ -71,15 +70,9 @@ static void	sort_five(t_stack *a, t_stack *b)
 		else
 			ra(a);
 	}
-	
-	// Ordena os 3 que ficaram em a
 	sort_three(a);
-	
-	// Garante que o menor (index 0) está em cima de b
-	if (b->size == 2 && b->top->index == 1)
+	if (b->size == 2 && b->top->index == 0)
 		sb(b);
-	
-	// Volta os 2 menores para a (já ordenados)
 	pa(a, b);
 	if (b->top)
 		pa(a, b);
