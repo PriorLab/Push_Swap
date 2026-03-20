@@ -12,17 +12,19 @@
 
 #include "../../includes/push_swap.h"
 
-static void	swap(t_stack	*stack)
+static void	swap(t_stack *stack)
 {
-	int	first;
-	int	second;
+	int	tmp_val;
+	int	tmp_idx;
 
 	if (!stack->top || !stack->top->next)
 		return ;
-	first = stack_pop(stack);
-	second = stack_pop(stack);
-	stack_push(stack, first);
-	stack_push(stack, second);
+	tmp_val = stack->top->value;
+	tmp_idx = stack->top->index;
+	stack->top->value = stack->top->next->value;
+	stack->top->index = stack->top->next->index;
+	stack->top->next->value = tmp_val;
+	stack->top->next->index = tmp_idx;
 }
 
 void	sa(t_stack *a)
