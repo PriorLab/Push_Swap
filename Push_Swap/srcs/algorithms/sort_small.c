@@ -57,11 +57,7 @@ static void	sort_four(t_stack *a, t_stack *b)
 		else
 			ra(a);
 	}
-	
-	// Ordena os 3 que ficaram em a
 	sort_three(a);
-	
-	// Volta o menor para a
 	pa(a, b);
 }
 
