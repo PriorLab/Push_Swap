@@ -24,25 +24,38 @@ t_stack	*stack_new(void)
 	return (stack);
 }
 
+
 void	stack_push(t_stack *stack, int value)
 {
 	t_node	*new;
 
+	if (!stack)
+		return ;
+	
 	new = malloc(sizeof(t_node));
 	if (!new)
-		return ;
+	{
+		write(STDERR_FILENO, "Error\n", 6);
+		free_stack(stack);
+		exit(EXIT_FAILURE);
+	}
+	
 	new->index = -1;
 	new->value = value;
-	new->next = stack -> top;
+	new->next = stack->top;
 	stack->top = new;
-	stack->size ++;
+	stack->size++;
 }
 
-int	stack_pop(t_stack	*stack)
+
+int	stack_pop(t_stack *stack)
 {
 	t_node	*tmp;
 	int		value;
 
+	if (!stack || !stack->top)
+		return (0);
+	
 	tmp = stack->top;
 	value = tmp->value;
 	stack->top = stack->top->next;
@@ -51,8 +64,12 @@ int	stack_pop(t_stack	*stack)
 	return (value);
 }
 
-int	stack_peek(t_stack	*stack)
+
+int	stack_peek(t_stack *stack)
 {
+	if (!stack || !stack->top)
+		return (0);
+	
 	return (stack->top->value);
 }
 
