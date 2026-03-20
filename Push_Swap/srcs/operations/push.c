@@ -12,11 +12,25 @@
 
 #include "../../includes/push_swap.h"
 
+static void	move_top(t_stack *src, t_stack *dst)
+{
+	t_node	*node;
+
+	if (!src->top)
+		return ;
+	node = src->top;
+	src->top = src->top->next;
+	src->size--;
+	node->next = dst->top;
+	dst->top = node;
+	dst->size++;
+}
+
 void	pa(t_stack *a, t_stack *b)
 {
 	if (!b->top)
 		return ;
-	stack_push(a, stack_pop(b));
+	move_top(b, a);
 	ft_printf("pa\n");
 }
 
@@ -24,6 +38,6 @@ void	pb(t_stack *a, t_stack *b)
 {
 	if (!a->top)
 		return ;
-	stack_push(b, stack_pop(a));
+	move_top(a, b);
 	ft_printf("pb\n");
 }
