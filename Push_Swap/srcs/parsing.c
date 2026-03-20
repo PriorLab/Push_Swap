@@ -85,6 +85,7 @@ int	ft_duplicates(t_stack *a)
 	return (0);
 }
 
+
 void	parse_args(int ac, char *av[], t_stack *a)
 {
 	int		i;
@@ -93,6 +94,10 @@ void	parse_args(int ac, char *av[], t_stack *a)
 	i = ac - 1;
 	while (i >= 1)
 	{
+		// Verifica string vazia ou NULL
+		if (!av[i] || !av[i][0])
+			error_exit(a, NULL);
+		
 		split = ft_split(av[i], ' ');
 		if (!split || !split[0])
 		{
@@ -103,6 +108,8 @@ void	parse_args(int ac, char *av[], t_stack *a)
 		free_split(split);
 		i--;
 	}
+	
+	// Verifica duplicados no final
 	if (ft_duplicates(a))
 		error_exit(a, NULL);
 }
